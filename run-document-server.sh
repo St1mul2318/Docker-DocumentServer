@@ -92,6 +92,7 @@ JWT_HEADER=${JWT_HEADER:-Authorization}
 JWT_IN_BODY=${JWT_IN_BODY:-false}
 
 WOPI_ENABLED=${WOPI_ENABLED:-false}
+REQUEST_FILTERING=${REQUEST_FILTERING:-false}
 
 GENERATE_FONTS=${GENERATE_FONTS:-true}
 
@@ -343,6 +344,12 @@ update_ds_settings(){
   if [ "${WOPI_ENABLED}" == "true" ]; then
     ${JSON} -I -e "if(this.wopi===undefined)this.wopi={}"
     ${JSON} -I -e "this.wopi.enable = true"
+  fi
+
+  if [ "${REQUEST_FILTERING}" == "true" ]; then
+    ${JSON} -I -e "if(this.services.CoAuthoring['request-filtering-agent']===undefined)this.services.CoAuthoring['request-filtering-agent']={}"
+    ${JSON} -I -e "this.services.CoAuthoring['request-filtering-agent'].allowPrivateIPAddress = true"
+    ${JSON} -I -e "this.services.CoAuthoring['request-filtering-agent'].allowMetaIPAddress = true"
   fi
 }
 
