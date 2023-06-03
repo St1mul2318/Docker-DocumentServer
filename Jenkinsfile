@@ -4,7 +4,7 @@ pipeline {
   }
 
   stages {
-    stage('') {
+    stage('Start tests') {
       steps {
         sh '''
            cd tests
