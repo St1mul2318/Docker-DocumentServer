@@ -8,4 +8,13 @@ pipeline {
             }
         }
     }
+    stages {
+	stage('2-Stage') {
+	    steps {
+		sh '''
+			cat ls -al
+		'''
+		}
+	}
+     }
 }
