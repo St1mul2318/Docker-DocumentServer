@@ -1,6 +1,6 @@
 pipeline {
     agent {
-         docker { image 'ubuntu:latest' }
+         docker { image 'ubuntu:22.04' }
     }
 
     stages {
@@ -12,9 +12,7 @@ pipeline {
         }
         stage('Start docker compose') {
             steps {
-                sh '''
-		  cat /etc/os-release
-                '''
+                echo "Ubuntu installing successfull"
             }
         }
      }
