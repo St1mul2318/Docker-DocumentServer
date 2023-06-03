@@ -7,8 +7,6 @@ pipeline {
                 echo 'Hello World'
             }
         }
-    }
-    stages {
         stage('2-Stage') {
             steps {
                 sh '''
@@ -16,5 +14,5 @@ pipeline {
                 '''
             }
         }
-    }
+     }
 }
