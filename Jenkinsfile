@@ -1,10 +1,17 @@
 pipeline {
-  agent any
+  agent {
+    docker { image 'ubuntu:22.04' }
+  }
 
   stages {
-    stage('Test') {
+    stage('') {
       steps {
-        sh 'echo Test'
+        sh '''
+           cd tests
+           export POSTGRES_VERSION=9.5
+           export config=postgres.yml
+           ./test.sh
+         '''
       }
     }
   }
