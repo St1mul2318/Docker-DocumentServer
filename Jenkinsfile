@@ -1,19 +1,12 @@
 pipeline {
-    agent {
-         docker { image 'ubuntu:22.04' }
+  agent {
+    docker { image 'node:16-alpine' }
+  }
+  stages {
+    stage('Test') {
+      steps {
+        sh 'node --version'
+      }
     }
-
-    stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
-		sh 'ls -al'
-            }
-        }
-        stage('Start docker compose') {
-            steps {
-                echo "Ubuntu installing successfull"
-            }
-        }
-     }
+  }
 }
