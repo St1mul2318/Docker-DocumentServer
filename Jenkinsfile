@@ -9,12 +9,12 @@ pipeline {
         }
     }
     stages {
-	stage('2-Stage') {
-	    steps {
-		sh '''
-			cat ls -al
-		'''
-		}
-	}
-     }
+        stage('2-Stage') {
+            steps {
+                sh '''
+                  ls -al
+                '''
+            }
+        }
+    }
 }
