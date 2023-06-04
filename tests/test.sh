@@ -69,7 +69,7 @@ echo "=========================="
 #echo "=========================="
 #docker logs onlyoffice-postgresql
 #echo "=========================="
-healthcheck_res=$(wget --no-check-certificate -qO - ${url}/healthcheck)
+healthcheck_res=$(curl localhost/healthcheck)
 
 # Fail if it isn't true
 if [[ $healthcheck_res == "true" ]]; then
@@ -80,5 +80,6 @@ else
 fi
 
 docker-compose -p ds -f $config down
+docker volume rm -f $(docker volume ls)
 docker rm -f $(docker ps -aq)
 docker rmi -f $(docker images -aq)
