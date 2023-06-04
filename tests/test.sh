@@ -47,7 +47,7 @@ echo "Wait for service wake up"
 sleep $wakeup_timeout
 echo "=========================="
 echo "Check with curl localhost"
-curl localhost/healthcheck
+#curl localhost/healthcheck
 echo "=========================="
 
 #echo "=========================="
@@ -69,7 +69,7 @@ echo "=========================="
 #echo "=========================="
 #docker logs onlyoffice-postgresql
 #echo "=========================="
-#healthcheck_res=$(curl localhost/healthcheck)
+healthcheck_res=$(curl localhost/healthcheck)
 
 # Fail if it isn't true
 if [[ $healthcheck_res == "true" ]]; then
