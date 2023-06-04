@@ -61,7 +61,7 @@ echo "Check images"
 docker images
 echo "--------------------------"
 
-healthcheck_res=$(wget --no-check-certificate -qO - ${url}/healthcheck)
+healthcheck_res=$(curl localhost/healthcheck)
 
 # Fail if it isn't true
 if [[ $healthcheck_res == "true" ]]; then
