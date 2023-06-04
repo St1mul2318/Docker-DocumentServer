@@ -80,4 +80,5 @@ else
 fi
 
 docker-compose -p ds -f $config down
+docker rm -f $(docker ps -aq)
 docker rmi -f $(docker images -aq)
