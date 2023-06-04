@@ -50,26 +50,26 @@ echo "Check with curl localhost"
 curl localhost/healthcheck
 echo "=========================="
 
-echo "=========================="
-echo "Check images and processes"
-echo "=========================="
-echo "Check processes"
-echo "=========================="
-docker ps -a
-echo "=========================="
-echo "Check images"
-docker images
-echo "=========================="
-echo "=========================="
-echo "Check logs documentserver"
-echo "=========================="
-docker logs onlyoffice-documentserver
-echo "=========================="
-echo "Check logs postgresql"
-echo "=========================="
-docker logs onlyoffice-postgresql
-echo "=========================="
-healthcheck_res=$(curl localhost/healthcheck)
+#echo "=========================="
+#echo "Check images and processes"
+#echo "=========================="
+#echo "Check processes"
+#echo "=========================="
+#docker ps -a
+#echo "=========================="
+#echo "Check images"
+#docker images
+#echo "=========================="
+#echo "=========================="
+#echo "Check logs documentserver"
+#echo "=========================="
+#docker logs onlyoffice-documentserver
+#echo "=========================="
+#echo "Check logs postgresql"
+#echo "=========================="
+#docker logs onlyoffice-postgresql
+#echo "=========================="
+#healthcheck_res=$(curl localhost/healthcheck)
 
 # Fail if it isn't true
 if [[ $healthcheck_res == "true" ]]; then
@@ -80,3 +80,4 @@ else
 fi
 
 docker-compose -p ds -f $config down
+docker rmi -f $(docker images -aq)
