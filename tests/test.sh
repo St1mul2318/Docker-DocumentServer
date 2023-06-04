@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "--------------------------"
+echo "Updated script"
+echo "--------------------------"
+
 ssl=${ssl:-false}
 private_key=${private_key:-tls.key}
 certificate_request=${certificate_request:-tls.csr}
@@ -41,6 +45,22 @@ wakeup_timeout=90
 # Get documentserver healthcheck status
 echo "Wait for service wake up"
 sleep $wakeup_timeout
+echo "--------------------------"
+echo "Check with curl localhost"
+curl localhost/healthcheck
+echo "--------------------------"
+
+echo "--------------------------"
+echo "Check images and processes"
+echo "--------------------------"
+echo "Check processes"
+echo "--------------------------"
+docker ps -a
+echo "--------------------------"
+echo "Check images"
+docker images
+echo "--------------------------"
+
 healthcheck_res=$(wget --no-check-certificate -qO - ${url}/healthcheck)
 
 # Fail if it isn't true
