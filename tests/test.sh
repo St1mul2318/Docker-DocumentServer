@@ -46,7 +46,7 @@ wakeup_timeout=90
 echo "Wait for service wake up"
 sleep $wakeup_timeout
 echo "=========================="
-echo "Check with curl localhost"
+echo "Check with wgent localhost"
 #curl localhost/healthcheck
 echo "=========================="
 
@@ -69,7 +69,7 @@ echo "=========================="
 #echo "=========================="
 #docker logs onlyoffice-postgresql
 #echo "=========================="
-healthcheck_res=$(curl localhost/healthcheck)
+healthcheck_res=$(wget --no-check-certificate -qO - ${url}/healthcheck)
 
 # Fail if it isn't true
 if [[ $healthcheck_res == "true" ]]; then
