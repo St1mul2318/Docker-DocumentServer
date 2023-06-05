@@ -131,9 +131,9 @@ jobs:
       - name: "Start ${{ matrix.name }}"
         run: |
           cd tests                                                    
-          export config=${{ matrix.compose_file }}                    # Export .yml files in variable config
+          export config=certs-customized.yml                    # Export .yml files in variable config
           echo "export variables for ${{ matrix.compose_file }}"       
           for v in ${{ matrix.variables }}; do
             export ${v}
           done
-          ./test.sh
+          echo $v
